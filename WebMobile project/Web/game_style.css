@@ -1,0 +1,171 @@
+
+/* board */
+
+.board_table{
+    border-collapse: collapse;
+    margin: 0 auto !important;
+    float: none !important;
+}
+.center_table{
+
+    margin: 0 auto !important;
+    float: none !important;
+}
+.table {
+    border-radius: 5px;
+    width: 50%;
+    float: none;
+}
+
+.border_1{
+    border: 1px ridge rgba(4, 6, 13, 0.74);
+    border-radius: 20px;
+    padding: 5px;
+}
+.row{  }
+.circle{/* to lekar nigi ne nucaš*/
+    height:50px;
+    width:50px;
+    border:1px solid #c6c6c6;
+    float: left;
+}
+
+.cell{
+    float: left;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    text-align:center;
+    border: 1px solid #383838;
+}
+.coordinates_cell{
+    float: left;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.cell:hover{
+    background-color: #fffad7;
+}
+/*
+.cell:hover{
+    background-color: #ff8e83 !important;
+}
+*/
+/*
+.cell:nth-of-type(even):hover, .cell:nth-of-type(odd):hover {
+    background-color: #b4af97;
+}
+*/
+
+.owner0{
+    background-color: #5e802e;
+}
+.owner1{
+    background-color: #7f262a;
+}
+.owner2{
+    background-color: #5b94bb;
+}
+.owner3{
+    background-color: #bbb163;
+}
+.owner4{
+    background-color: #bb8db6;
+}
+
+.neutral{
+    background-color: #5e802e;
+}
+.green{
+    background-color: #5e802e;
+}
+.red{
+    background-color: #7f262a;
+}
+.blue{
+    background-color: #5b94bb;
+}
+.yellow{
+    background-color: #bbb163;
+}
+.pink{
+    background-color: #bb8db6;
+}
+
+.stone_tower{
+    background-image: url("towers/grey/stone_tower.png");
+}
+.tent{
+    background-image: url("towers/grey/tent.png");
+}
+
+/*
+tr:nth-of-type(odd) .cell:nth-of-type(even), tr:nth-of-type(even) .cell:nth-of-type(odd) {
+    background-color: #5d5049;
+}
+*/
+
+
+
+/*  */
+.game_item{
+    float:left;
+    overflow: auto;
+    margin:5px;
+    font-size: 14px;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.game_item_image{
+    float:left;
+    max-width:180px;
+    max-height: 275px;
+}
+.game_item_part{
+    float:left;
+    min-height: 100px;
+    width: 50%;
+    margin: 0 auto;
+}
+.item_part_half{
+    padding:5px;
+}
+
+
+
+
+#turn{
+    font-weight: bold;
+}
+#on_turn{
+    font-weight: bold;
+}
+
+
+#winner {
+    width: 300px;
+    height: 220px;
+    position: fixed;
+    top: 40%;
+    left: 40%;
+    z-index: 1;
+    font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin: 40px auto;
+    text-transform: lowercase;
+    line-height: 145%;
+    font-size: 14pt;
+    font-variant: small-caps;
+    background-color: rgba(120, 119, 132, 0.52);
+
+}
+
+
+

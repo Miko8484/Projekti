@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    
+    <ion-title style="float:left;">Register</ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <div class="login-box">
+    <form #registerForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            
+            <ion-item>
+              <ion-label color="primary" floating>Username</ion-label>
+              <ion-input type="text" name="username" [(ngModel)]="registerCredentials.username"  required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label color="primary" floating>Firstname</ion-label>
+              <ion-input type="text" name="firstname" [(ngModel)]="registerCredentials.firstname"  required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label color="primary" floating>Lastname</ion-label>
+              <ion-input type="text" name="lastname" [(ngModel)]="registerCredentials.lastname"  required></ion-input>
+            </ion-item>
+
+             <ion-item>
+              <ion-label color="primary" floating>Email</ion-label>
+              <ion-input type="email" name="email" [(ngModel)]="registerCredentials.email"  required></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label color="primary" floating>Password</ion-label>
+              <ion-input type="password" name="password" [(ngModel)]="registerCredentials.password"  required></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label color="primary" floating>Confirm password</ion-label>
+              <ion-input type="password" name="password2" [(ngModel)]="registerCredentials.password2"  required></ion-input>
+            </ion-item>
+            <br/>
+            <button ion-button (click)="makePicture()">Take picture</button><br/>
+            <img style="width:40%;height:40%" [src]="base64Image" *ngIf="base64Image" required/><br/>
+            
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col class="signup-col">
+          <button style="margin-left:5%;" (click)="createAccount()" ion-button [disabled]="!registerForm.form.valid">Sign up</button>
+        </ion-col>
+      </ion-row>
+      
+    </form>
+  </div>
+
+
+
+</ion-content>

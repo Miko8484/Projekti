@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="float:left;padding-top:15px;">Leaderboards </ion-title>
+    <button class="button button-icon ion-compose" (click)="logout()" style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+      <ion-icon name="exit"></ion-icon>
+    </button>
+    <button class="button button-icon ion-compose" (click)="profile()" style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+      <img  [src]="base64Image" *ngIf="base64Image" /><br/>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-row class="header">
+        <ion-col>
+        <strong>USERNAME</strong>
+        </ion-col>
+        <ion-col>
+        <strong>GAMES</strong>
+        </ion-col>
+        <ion-col>
+        <strong>WINS</strong>
+        </ion-col>
+        <ion-col>
+        <strong>LOSES</strong>
+        </ion-col>
+        <ion-col>
+        <strong>ELO</strong>
+        </ion-col>
+    </ion-row>
+    <ion-item *ngFor = "let item of items" text-wrap>
+        <ion-row class="content-row">
+            <ion-col>
+            <strong style="margin-right: 25px">{{item.username}}</strong>
+            </ion-col>
+             <ion-col>
+            <strong style="margin-right: 20px">{{item.number_of_games}}</strong>
+            </ion-col>
+            <ion-col>
+            <strong>{{item.number_of_wins}}</strong>
+            </ion-col>
+            <ion-col>
+            <strong style="margin-left: 10px">{{item.number_of_loses}}</strong>
+            </ion-col>
+            <ion-col >
+            <strong style="margin-left: 25px"> {{item.elo}}</strong>
+            </ion-col>
+        </ion-row>
+    </ion-item>
+</ion-content>

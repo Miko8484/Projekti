@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="width:80%;float:left">Edit Profile </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+      <div class="login-box">
+        <form (ngSubmit)="editProfile()" #editForm="ngForm">
+          <ion-row>
+            <ion-col>
+              <ion-list inset>
+                <ion-item>
+                  <ion-label color="primary" floating>Username:</ion-label>
+                  <ion-input type="text" id="username" name="username" [(ngModel)]="editCredentials.username"  required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="primary" floating>Firstname:</ion-label>
+                  <ion-input type="text" id="firstname" name="firstname" [(ngModel)]="editCredentials.firstname"  required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="primary" floating>Lastname:</ion-label>
+                  <ion-input type="text" id="lastname" name="lastname" [(ngModel)]="editCredentials.lastname"  required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="primary" floating>Email:</ion-label>
+                  <ion-input type="email" id="email"  name="email" [(ngModel)]="editCredentials.email"  required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="primary" stacked>New password: (optional)</ion-label>
+                  <ion-input type="password" placeholder="New password (optional)" id="password1" name="password1" [(ngModel)]="editCredentials.password"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label color="primary" stacked>Confirm password: (optional)</ion-label>
+                  <ion-input type="password" placeholder="Confirm password (optional)" id="password2" name="password2" [(ngModel)]="editCredentials.password2"></ion-input>
+                </ion-item>
+                <br/>
+                  <button ion-button (click)="makePicture()">New profile image: (optional)</button><br/>
+
+                  <ion-label stacekd style="color: rgb(72, 138, 255);">Latest Picture:</ion-label>
+                  <img style="width:40%;height:40%" [src]="base64Image" *ngIf="base64Image" /><br/>
+                  <button ion-button (click)="editProfile()" [disabled]="!editForm.form.valid">EDIT PROFILE</button><br/>
+
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </form>
+      </div>
+
+
+
+</ion-content>

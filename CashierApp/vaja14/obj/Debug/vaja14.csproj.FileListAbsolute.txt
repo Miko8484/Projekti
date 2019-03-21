@@ -1,0 +1,108 @@
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\bin\Debug\vaja14.exe.config
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.csprojResolveAssemblyReference.cache
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.Dodaj.resources
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.Form1.resources
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.Izbrisi.resources
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.Properties.Resources.resources
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.Spremeni.resources
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.VsiIzdelki.resources
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.csproj.GenerateResource.Cache
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\bin\Debug\vaja14.exe
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\bin\Debug\vaja14.pdb
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\bin\Debug\MySql.Data.dll
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.exe
+c:\users\miko55\documents\visual studio 2013\Projects\vaja14\vaja14\obj\Debug\vaja14.pdb
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\bin\Debug\vaja14.exe.config
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.exe
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.pdb
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\bin\Debug\vaja14.exe
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\bin\Debug\vaja14.pdb
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\bin\Debug\MySql.Data.dll
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.csprojResolveAssemblyReference.cache
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Dodaj.resources
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Form1.resources
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Izbrisi.resources
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Properties.Resources.resources
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Spremeni.resources
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.VsiIzdelki.resources
+G:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.csproj.GenerateResource.Cache
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\bin\Debug\vaja14.exe.config
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.exe
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.pdb
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\bin\Debug\vaja14.exe
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\bin\Debug\vaja14.pdb
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.csprojResolveAssemblyReference.cache
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Dodaj.resources
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Form1.resources
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Izbrisi.resources
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Properties.Resources.resources
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.Spremeni.resources
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.VsiIzdelki.resources
+F:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.csproj.GenerateResource.Cache
+K:\4R2\NRPA\neocenjvanje\blagajna\vaja14\bin\Debug\vaja14.exe.config
+K:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.exe
+K:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.pdb
+E:\4R2\NRPA\neocenjvanje\blagajna\vaja14\bin\Debug\vaja14.exe.config
+E:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.exe
+E:\4R2\NRPA\neocenjvanje\blagajna\vaja14\obj\Debug\vaja14.pdb
+C:\Users\miko55\Desktop\blagajna\vaja14\bin\Debug\vaja14.exe.config
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.exe
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.pdb
+C:\Users\miko55\Desktop\blagajna\vaja14\bin\Debug\vaja14.exe
+C:\Users\miko55\Desktop\blagajna\vaja14\bin\Debug\vaja14.pdb
+C:\Users\miko55\Desktop\blagajna\vaja14\bin\Debug\MySql.Data.dll
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.csprojResolveAssemblyReference.cache
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.Dodaj.resources
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.Form1.resources
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.Izbrisi.resources
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.Properties.Resources.resources
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.Spremeni.resources
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.VsiIzdelki.resources
+C:\Users\miko55\Desktop\blagajna\vaja14\obj\Debug\vaja14.csproj.GenerateResource.Cache
+E:\informativni\blagajna\vaja14\bin\Debug\vaja14.exe.config
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.exe
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.pdb
+E:\informativni\blagajna\vaja14\bin\Debug\vaja14.exe
+E:\informativni\blagajna\vaja14\bin\Debug\vaja14.pdb
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.csprojResolveAssemblyReference.cache
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.Dodaj.resources
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.Form1.resources
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.Izbrisi.resources
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.Properties.Resources.resources
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.Spremeni.resources
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.VsiIzdelki.resources
+E:\informativni\blagajna\vaja14\obj\Debug\vaja14.csproj.GenerateResource.Cache
+G:\informativni\blagajna\vaja14\bin\Debug\vaja14.exe.config
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.exe
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.pdb
+G:\informativni\blagajna\vaja14\bin\Debug\vaja14.exe
+G:\informativni\blagajna\vaja14\bin\Debug\vaja14.pdb
+G:\informativni\blagajna\vaja14\bin\Debug\MySql.Data.dll
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.csprojResolveAssemblyReference.cache
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.Dodaj.resources
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.Form1.resources
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.Izbrisi.resources
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.Properties.Resources.resources
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.Spremeni.resources
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.VsiIzdelki.resources
+G:\informativni\blagajna\vaja14\obj\Debug\vaja14.csproj.GenerateResource.Cache
+E:\informativni\blagajna\vaja14\bin\Debug\Izdelki.mdf
+E:\informativni\blagajna\vaja14\bin\Debug\Izdelki_log.ldf
+K:\informativni\blagajna\vaja14\bin\Debug\vaja14.exe.config
+K:\informativni\blagajna\vaja14\obj\Debug\vaja14.exe
+K:\informativni\blagajna\vaja14\obj\Debug\vaja14.pdb
+H:\informativni\blagajna\vaja14\bin\Debug\vaja14.exe.config
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.exe
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.pdb
+H:\informativni\blagajna\vaja14\bin\Debug\Izdelki.mdf
+H:\informativni\blagajna\vaja14\bin\Debug\Izdelki_log.ldf
+H:\informativni\blagajna\vaja14\bin\Debug\vaja14.exe
+H:\informativni\blagajna\vaja14\bin\Debug\vaja14.pdb
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.csprojResolveAssemblyReference.cache
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.Dodaj.resources
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.Form1.resources
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.Izbrisi.resources
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.Properties.Resources.resources
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.Spremeni.resources
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.VsiIzdelki.resources
+H:\informativni\blagajna\vaja14\obj\Debug\vaja14.csproj.GenerateResource.Cache

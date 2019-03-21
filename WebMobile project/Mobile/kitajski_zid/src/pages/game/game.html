@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="float:left;padding-top:15px;">Create_Game </ion-title>
+    <button class="button button-icon ion-compose" (click)="logout()" style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+      <ion-icon name="exit"></ion-icon>
+    </button>
+    <button class="button button-icon ion-compose" (click)="profile()" style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+      <img  [src]="base64Image" *ngIf="base64Image" /><br/>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <p>{{text}}</p>
+
+  <tr class="center_table" *ngFor="let row of item.board;let i = index">
+    <td class="cell owner{{col.owner}}" *ngFor="let col of row;let j = index" (click)="send($event,i,j)" id="{{ i +','+ j }}">
+    </td>
+  </tr>
+
+
+
+</ion-content>

@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title style="float:left;padding-top:15px;">History</ion-title>
+        <button class="button button-icon ion-compose" (click)="logout()"
+                style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+            <ion-icon name="exit"></ion-icon>
+        </button>
+        <button class="button button-icon ion-compose" (click)="profile()"
+                style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+            <img [src]="base64Image" *ngIf="base64Image"/><br/>
+        </button>
+    </ion-navbar>
+</ion-header>
+
+    <ion-content padding>
+
+        <ion-grid>
+            <ion-row  class="row header">
+                <ion-col class="col">
+                    <strong>WINNER</strong>
+                </ion-col>
+                <ion-col class="col">
+                    <strong>LOSER</strong>
+                </ion-col>
+                <ion-col class="col">
+                    <strong style>ELO GAIN</strong>
+                </ion-col>
+                <ion-col class="col">
+                    <strong>DATE</strong>
+                </ion-col>
+            </ion-row>
+            <ion-item *ngFor="let history of history_arr" text-wrap>
+                <ion-row class="row">
+                        <ion-col *ngIf="history.winner_id == id" class="col">
+                            <strong >{{username}}</strong>
+                        </ion-col>
+                        <ion-col *ngIf="history.winner_id != id" class="col">
+                            <strong >{{enemy}}</strong>
+                        </ion-col>
+                        <ion-col *ngIf="history.loser_id == id" class="col">
+                            <strong >{{username}}</strong>
+                        </ion-col>
+                        <ion-col *ngIf="history.loser_id != id" class="col">
+                            <strong >{{enemy}}</strong>
+                        </ion-col>
+
+                        <ion-col *ngIf="history.winner_id == id" class="col">
+                            <strong >{{history.elo_gain}}</strong>
+                        </ion-col>
+
+                        <ion-col *ngIf="history.winner_id != id" class="col">
+                            <strong >-{{history.elo_gain}}</strong>
+                        </ion-col>
+                    <ion-col>
+                        <strong > {{history.date}}</strong>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-grid>
+
+        <button ion-button icon-only (click)="facebookShare()" color="dark" clear>
+            <ion-icon class="share-icon" name="logo-facebook"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="basicShare()" color="dark" clear>
+            <ion-icon class="share-icon" name="logo-twitter"></ion-icon>
+        </button>
+    </ion-content>

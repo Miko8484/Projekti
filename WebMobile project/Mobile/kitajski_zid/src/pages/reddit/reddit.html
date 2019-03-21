@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="float:left;padding-top:15px;">Reddit news </ion-title>
+    <button class="button button-icon ion-compose" (click)="logout()" style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+      <ion-icon name="exit"></ion-icon>
+    </button>
+    <button class="button button-icon ion-compose" (click)="profile()" style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+      <img  [src]="base64Image" *ngIf="base64Image" /><br/>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed>Category</ion-label>
+        <ion-select (ionChange)="changeCategory()" [(ngModel)]="category" name="category">
+          <ion-option value="artificial">Artificial inteligence</ion-option>
+          <ion-option value="TechNewsToday">Techonology</ion-option>
+          <ion-option value="gamernews">Gaming</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item *ngFor = "let item of items" text-wrap>
+      <ion-thumbnail *ngIf="item.data.thumbnail" item-left>
+        <img [src]="getThumbnailImage(item.data.thumbnail)">
+        <!--<img  ng-switch-default src="{{item.data.thumbnail}}">-->
+      </ion-thumbnail>
+      <h2 class="wrap item-text-wrap">{{item.data.title}} </h2>
+      <p class="wrap item-text-wrap" style="word-wrap: break-word; word-break: break-all;">
+        <ion-icon name="person" item-left>{{item.data.author}}</ion-icon>
+        <ion-icon name="thumbs-up">{{item.data.score}}</ion-icon>&nbsp;&nbsp;
+        <ion-icon name="chatboxes">{{item.data.num_comments}}</ion-icon>       
+      </p>
+      <a ion-button block target="_blank" href="http://reddit.com/{{item.data.permalink}}">VIEW ON REDDIT</a>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

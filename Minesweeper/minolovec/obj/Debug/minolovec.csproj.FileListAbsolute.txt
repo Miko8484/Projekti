@@ -1,0 +1,30 @@
+C:\Users\mitja\source\repos\minolovec\minolovec\bin\Debug\minolovec.exe.config
+C:\Users\mitja\source\repos\minolovec\minolovec\bin\Debug\minolovec.exe
+C:\Users\mitja\source\repos\minolovec\minolovec\bin\Debug\minolovec.pdb
+C:\Users\mitja\source\repos\minolovec\minolovec\obj\Debug\minolovec.csprojResolveAssemblyReference.cache
+C:\Users\mitja\source\repos\minolovec\minolovec\obj\Debug\minolovec.Form1.resources
+C:\Users\mitja\source\repos\minolovec\minolovec\obj\Debug\minolovec.Properties.Resources.resources
+C:\Users\mitja\source\repos\minolovec\minolovec\obj\Debug\minolovec.csproj.GenerateResource.cache
+C:\Users\mitja\source\repos\minolovec\minolovec\obj\Debug\minolovec.csproj.CoreCompileInputs.cache
+C:\Users\mitja\source\repos\minolovec\minolovec\obj\Debug\minolovec.exe
+C:\Users\mitja\source\repos\minolovec\minolovec\obj\Debug\minolovec.pdb
+C:\Users\mitja\Desktop\minolovec\minolovec\bin\Debug\minolovec.exe.config
+C:\Users\mitja\Desktop\minolovec\minolovec\bin\Debug\minolovec.exe
+C:\Users\mitja\Desktop\minolovec\minolovec\bin\Debug\minolovec.pdb
+C:\Users\mitja\Desktop\minolovec\minolovec\obj\Debug\minolovec.csprojResolveAssemblyReference.cache
+C:\Users\mitja\Desktop\minolovec\minolovec\obj\Debug\minolovec.Form1.resources
+C:\Users\mitja\Desktop\minolovec\minolovec\obj\Debug\minolovec.Properties.Resources.resources
+C:\Users\mitja\Desktop\minolovec\minolovec\obj\Debug\minolovec.csproj.GenerateResource.cache
+C:\Users\mitja\Desktop\minolovec\minolovec\obj\Debug\minolovec.csproj.CoreCompileInputs.cache
+C:\Users\mitja\Desktop\minolovec\minolovec\obj\Debug\minolovec.exe
+C:\Users\mitja\Desktop\minolovec\minolovec\obj\Debug\minolovec.pdb
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\bin\Debug\minolovec.exe.config
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\bin\Debug\minolovec.exe
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\bin\Debug\minolovec.pdb
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\obj\Debug\minolovec.csprojResolveAssemblyReference.cache
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\obj\Debug\minolovec.Form1.resources
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\obj\Debug\minolovec.Properties.Resources.resources
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\obj\Debug\minolovec.csproj.GenerateResource.cache
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\obj\Debug\minolovec.csproj.CoreCompileInputs.cache
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\obj\Debug\minolovec.exe
+C:\Users\mitja\Desktop\Faks3\Sistemska programska oprema\Projekt\minolovec\minolovec\obj\Debug\minolovec.pdb

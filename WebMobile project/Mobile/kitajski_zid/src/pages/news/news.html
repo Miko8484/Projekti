@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="float:left;padding-top:15px;">News </ion-title>
+    <button class="button button-icon ion-compose" (click)="logout()" style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+      <ion-icon name="exit"></ion-icon>
+    </button>
+    <button class="button button-icon ion-compose" (click)="profile()" style="width:50px;height:50px;background-color:transparent;float:right;;font-size:1.7em">
+      <img  [src]="base64Image" *ngIf="base64Image" /><br/>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+		<ion-item *ngFor="let bd of bds" text-wrap>
+              <ion-thumbnail *ngIf="bd.image" item-left>
+		        <img *ngIf="bd.image" src="{{bd.image}}">
+		      </ion-thumbnail>
+			  <h2 *ngIf="bd.header">{{bd.header}} </h2>
+              <h3 *ngIf="bd.content">{{bd.content}} </h3>
+              <a ion-button block target="_blank" href="http://www.computerworld.com/{{bd.link}}" *ngIf="bd.link">VIEW ON COMPUTERWORLD</a>
+
+			</ion-item>
+	</ion-list>	
+
+</ion-content>

@@ -1,0 +1,37 @@
+﻿SLO
+
+Kitajski zid je strategijska namizna igra, ki jo lahko igrata dva igralca.
+V igri igralca postavljata figure na desko. Figuram se pravi wall. Zmagaš pa tako, da si prisvojiš čim več teritorija.
+
+Deska ima (X,Y) velikost mreže. Točki v mreži pravimo field. Velikost mreže je odvisna od tipa igre, ki jo igralca zbereta pred začetkom igre.
+Vsak igralec lahko postavi eno figuro na potezo. Prvi igralec je bele barve, drugi pa črne. 
+
+Bel igralec lahko postavlja bele figure, črni pa črne figure. Igra se začne ko bel igralec postavi svojo figuro na katero koli točko na deski, nato pa mu sledi še črni.
+
+Naslednje figure se lahko igrajo samo na točke, kjer se v 1x1 bližini nahajo druge figure iste barve.
+Oba igralca nadaljujeta z postavljanjem figur na deski, dokler en igralec več nima nobene možne poteze, potem ta igralec izgubi.
+
+Igra je podobna kitajski igri GO, le da se tu, figure ne morajo prevzemati. 
+Pravila se zdijo enostavna, ampak za igro se nahaja kompleksna umetna inteligenca, saj je število možnih potez zelo veliko.
+
+
+
+ENG
+
+Chinese wall is a strategy board game. It is played by two players.
+In-game players place pieces called wall on board. You win by securing more territory than your opponent.
+
+The board has a (X,Y) sized grid and a point in grid is called field. Size of the board depends on the game mode that is decided before the start of the game.
+Each player may only play one piece per turn. Player one is called white player, while player 2 is called black.
+
+White has white wall pieces, while black has black wall pieces. The game starts by white player placing a piece anywhere on the board, followed by the black player.
+
+The next pieces can only be placed in 1x1 proximity of another piece of the same color.
+Both players continue playing pieces on empty fields until one played can no longer place a piece anywhere on the board. Then that player loses.
+The gameplay is somewhat similar to Chinese board game GO, with the exception of that the pieces are not taken when surrounded.
+The rules seem simple, but the game is very complex as the amount of possible of moves is very large.
+It poses a challenge for AI development.
+
+
+
+

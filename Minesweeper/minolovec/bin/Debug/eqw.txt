@@ -1,0 +1,660 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace minolovec
+{
+    public partial class Form1 : Form
+    {
+        public class Player
+        {
+            public string name;
+            public int tocke = 0;
+        }
+
+        private TcpListener server;
+        private Thread serverThread;
+        private TcpClient[] clients;
+        private Thread cThread;
+        private NetworkStream[] clientStreams;
+        private Player[] players;
+
+        private TcpClient client;
+        private Thread clientThread;
+        private NetworkStream clientStream;
+
+        private bool serverGame = true;
+        private bool clientGame = true;
+        public string igralec = "";
+        public bool serverTurn = true;
+        public string serverField = "";
+
+        List<Button> buttons = new List<Button>();
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void markGrid(int width, int height)
+        {
+            Button[,] polja = new Button[height, width];
+
+            int z = 0;
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    polja[i, j] = buttons[z];
+                    z++;
+                }
+            }
+
+            int count;
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (polja[i, j].Tag.ToString() == "B")
+                    {
+                        if (i - 1 >= 0 && j - 1 >= 0 && polja[i - 1, j - 1].Tag.ToString() != "B")
+                        {
+                            count = Int32.Parse(polja[i - 1, j - 1].Tag.ToString());
+                            count++;
+                            polja[i - 1, j - 1].Tag = count;
+                        }
+                        if (j - 1 >= 0 && polja[i, j - 1].Tag.ToString() != "B")
+                        {
+                            count = Int32.Parse(polja[i, j - 1].Tag.ToString());
+                            count++;
+                            polja[i, j - 1].Tag = count;
+                        }
+                        if (i + 1 < height && j - 1 >= 0 && polja[i + 1, j - 1].Tag.ToString() != "B")
+                        {
+                            count = Int32.Parse(polja[i + 1, j - 1].Tag.ToString());
+                            count++;
+                            polja[i + 1, j - 1].Tag = count;
+                        }
+                        if (i + 1 < height && j + 1 < width && polja[i + 1, j + 1].Tag.ToString() != "B")
+                        {
+                            count = Int32.Parse(polja[i + 1, j + 1].Tag.ToString());
+                            count++;
+                            polja[i + 1, j + 1].Tag = count;
+                        }
+                        if (j + 1 < width && polja[i, j + 1].Tag.ToString() != "B")
+                        {
+                            count = Int32.Parse(polja[i, j + 1].Tag.ToString());
+                            count++;
+                            polja[i, j + 1].Tag = count;
+                        }
+                        if (i - 1 >= 0 && j + 1 < width && polja[i - 1, j + 1].Tag.ToString() != "B")
+                        {
+                            count = Int32.Parse(polja[i - 1, j + 1].Tag.ToString());
+                            count++;
+                            polja[i - 1, j + 1].Tag = count;
+                        }
+                        if (i - 1 >= 0 && polja[i - 1, j].Tag.ToString() != "B")
+                        {
+                            count = Int32.Parse(polja[i - 1, j].Tag.ToString());
+                            count++;
+                            polja[i - 1, j].Tag = count;
+                        }
+                        if (i + 1 < height && polja[i + 1, j].Tag.ToString() != "B")
+                        {
+                            count = Int32.Parse(polja[i + 1, j].Tag.ToString());
+                            count++;
+                            polja[i + 1, j].Tag = count;
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+
+        /***************************** SERVER *********************************************/
+
+
+        private void makeGridServer()
+        {
+            int w = Int32.Parse(sirinaGrida.Text);
+            int h = Int32.Parse(visinaGrida.Text);
+
+            int randomHorizotnal, randomVertical;
+
+            if (w < 10)
+                w = 10;
+            if (h < 10)
+                h = 10;
+            if (w > 20)
+                w = 20;
+            if (h > 20)
+                h = 20;
+
+            int bombNumber = w * 2;
+            int[] bomb_i = new int[bombNumber];
+            int[] bomb_j = new int[bombNumber];
+
+            Random r = new Random();
+            for (int i = 0; i < bombNumber; i++)
+            {
+                randomHorizotnal = r.Next(0, w);
+                randomVertical = r.Next(0, h);
+                bomb_i[i] = randomHorizotnal;
+                bomb_j[i] = randomVertical;
+            }
+
+
+            for (int i = 0; i < h; i++)
+            {
+                for (int j = 0; j < w; j++)
+                {
+                    Button newButton = new Button();
+                    newButton.Width = 32;
+                    newButton.Height = 32;
+                    newButton.Top = 32 + (j * 32);
+                    newButton.Left = 180 + (i * 32);
+                    newButton.Name = i + "|" + j;
+
+                    for (int z = 0; z < bombNumber; z++)
+                    {
+                        if (i == bomb_i[z] && j == bomb_j[z])
+                        {
+                            newButton.Tag = "B";
+                            break;
+                        }
+                        else
+                            newButton.Tag = "0";
+                    }
+                    newButton.MouseDown += new MouseEventHandler(server_minefield_button_click);
+                    newButton.Enabled = false;
+
+                    buttons.Add(newButton);
+                    this.Controls.Add(newButton);
+                }
+            }
+        }
+
+        protected void server_minefield_button_click(object sender, EventArgs e)
+        {
+            MouseEventArgs c = (MouseEventArgs)e;
+            Button polje = sender as Button;
+            bool stevilka = false;
+            string state = "";
+            string send = "";
+            string playerName = "";
+            int playerCounter = 0;
+
+            if (polje.BackgroundImage == null)
+            {
+                if (c.Button == MouseButtons.Right)
+                {
+                    if (polje.Tag == "B")
+                    {
+                        polje.BackgroundImage = Properties.Resources.flag;
+                        state = "f";
+                    }
+                    else
+                        stevilka = true;
+                }
+                else
+                {
+                    if (polje.Tag == "B")
+                    {
+                        polje.BackgroundImage = Properties.Resources.bomb;
+                        state = "b";
+                    }
+                    else
+                        stevilka = true;
+                }
+
+                if (stevilka)
+                {
+                    state = "s";
+                    if (polje.Tag.ToString() == "0")
+                        polje.BackgroundImage = Properties.Resources.m0;
+                    else if (polje.Tag.ToString() == "1")
+                        polje.BackgroundImage = Properties.Resources.m1;
+                    else if (polje.Tag.ToString() == "2")
+                        polje.BackgroundImage = Properties.Resources.m2;
+                    else if (polje.Tag.ToString() == "3")
+                        polje.BackgroundImage = Properties.Resources.m3;
+                    else if (polje.Tag.ToString() == "4")
+                        polje.BackgroundImage = Properties.Resources.m4;
+                    else if (polje.Tag.ToString() == "5")
+                        polje.BackgroundImage = Properties.Resources.m5;
+                    else if (polje.Tag.ToString() == "6")
+                        polje.BackgroundImage = Properties.Resources.m6;
+                    else if (polje.Tag.ToString() == "7")
+                        polje.BackgroundImage = Properties.Resources.m7;
+                    else if (polje.Tag.ToString() == "8")
+                        polje.BackgroundImage = Properties.Resources.m8;
+                }
+
+                byte[] buffer = new byte[512];
+
+                send = polje.Name + "$" + state;
+                buffer = Encoding.ASCII.GetBytes(send);
+                for (int i = 0; i < Int32.Parse(stIgralcev.Text); i++)
+                {
+                    clientStreams[i].Write(buffer, 0, send.Length);
+                }
+
+                foreach (Button b in buttons)
+                    b.Enabled = false;
+
+                serverTurn = false;
+                polje.Enabled = false;
+            }
+        }
+
+
+        private void server_button_Click(object sender, EventArgs e)
+        {
+            makeGridServer();
+            markGrid(Int32.Parse(visinaGrida.Text),Int32.Parse(sirinaGrida.Text));
+
+            if (sirinaGrida.Text != "" && visinaGrida.Text != "" && stIgralcev.Text != "" && serverName.Text!="")
+            {
+                server = new TcpListener(IPAddress.Any, 8888);
+                serverThread = new Thread(new ThreadStart(LiseningForClient));
+                serverThread.Start();
+            }
+            else
+                MessageBox.Show("Izpolnite vsa polja");
+        }
+
+        private void LiseningForClient()
+        {
+            server.Start();
+            clients = new TcpClient[Int32.Parse(stIgralcev.Text)];
+            clientStreams = new NetworkStream[Int32.Parse(stIgralcev.Text)];
+            players = new Player[Int32.Parse(stIgralcev.Text)];
+
+            byte[] data = new byte[512];
+            string prejeto = "";
+
+            for (int i = 0; i < Int32.Parse(stIgralcev.Text); i++)
+            {
+                clients[i] = server.AcceptTcpClient();
+                cThread = new Thread(new ThreadStart(HandleClient));
+                cThread.Start();
+
+                clientStreams[i] = clients[i].GetStream();
+                
+                clientStreams[i].Read(data,0,data.Length); //dobimo ime igralca na clientu
+                prejeto = Encoding.ASCII.GetString(data);
+
+                Player p = new Player();
+                p.name = prejeto;
+
+                players[i] = p;
+            }
+
+            if (players[Int32.Parse(stIgralcev.Text) - 1] != null)
+            {
+                foreach (Button b in buttons)
+                {
+                    this.BeginInvoke((Action)(() =>
+                    {
+                        b.Enabled = true;
+                    }));
+                }
+            }
+
+        }
+
+        private void HandleClient()
+        {
+            do
+            {
+
+            } while (clients[clients.Length - 1] == null);
+
+            for (int i = 0; i < clients.Length; i++)
+                clientStreams[i] = clients[i].GetStream();
+
+            byte[] data = new byte[512];
+            byte[] buffer = new byte[512];
+            string send = "";
+
+            int counter = 0;
+            string bomb_cords = "";
+            for (int i = 0; i < Int32.Parse(visinaGrida.Text); i++)
+            {
+                for (int j = 0; j < Int32.Parse(sirinaGrida.Text); j++)
+                {
+                    if (counter < 100)
+                    {
+                        if (buttons[counter].Tag.ToString() == "B")
+                        {
+                            bomb_cords += i.ToString() + "|" + j.ToString() + "/";
+                        }
+                    }
+                    counter++;
+                }
+            }
+            for (int i = 0; i < clients.Length; i++)
+            {
+                send = sirinaGrida.Text + "|" + visinaGrida.Text;
+                data = Encoding.ASCII.GetBytes(send);  //višina in širina grida
+                clientStreams[i].Write(data, 0, send.Length);
+
+                data = Encoding.ASCII.GetBytes(bomb_cords);  //koordinate bomb
+                clientStreams[i].Write(data, 0, bomb_cords.Length);
+            }
+
+            string playerName = "";
+            int playerCounter = 0;
+            while (serverGame)
+            {
+                if (!serverTurn)
+                {
+                    for (int i = 0; i < clientStreams.Length; i++)
+                    {
+                        /*playerName = players[i].name;
+                        buffer = Encoding.ASCII.GetBytes(playerName);
+                        for (int j = 0; j < Int32.Parse(stIgralcev.Text); j++)
+                        {
+                            clientStreams[j].Write(buffer, 0, playerName.Length);
+                        }
+                        if (playerCounter + 1 < Int32.Parse(stIgralcev.Text))
+                            playerCounter += 1;
+                        else
+                            playerCounter = 0;*/
+
+                        Array.Clear(buffer, 0, buffer.Length);
+                        buffer = Encoding.ASCII.GetBytes("Ready");
+                        clientStreams[i].Write(buffer, 0, buffer.Length);
+
+                        clientStreams[i].Read(data, 0, data.Length);
+                        string prejeto = Encoding.ASCII.GetString(data);
+
+                        string[] hit = prejeto.Split('$');
+
+                        foreach (Button b in buttons)
+                        {
+                            if (b.Name == hit[0])
+                            {
+                                if (hit[1].StartsWith("b"))
+                                    b.BackgroundImage = Properties.Resources.bomb;
+                                else if (hit[1].StartsWith("f"))
+                                    b.BackgroundImage = Properties.Resources.flag;
+                                else if (hit[1].StartsWith("s"))
+                                {
+                                    if (b.Tag.ToString() == "0")
+                                        b.BackgroundImage = Properties.Resources.m0;
+                                    else if (b.Tag.ToString() == "1")
+                                        b.BackgroundImage = Properties.Resources.m1;
+                                    else if (b.Tag.ToString() == "2")
+                                        b.BackgroundImage = Properties.Resources.m2;
+                                    else if (b.Tag.ToString() == "3")
+                                        b.BackgroundImage = Properties.Resources.m3;
+                                    else if (b.Tag.ToString() == "4")
+                                        b.BackgroundImage = Properties.Resources.m4;
+                                    else if (b.Tag.ToString() == "5")
+                                        b.BackgroundImage = Properties.Resources.m5;
+                                    else if (b.Tag.ToString() == "6")
+                                        b.BackgroundImage = Properties.Resources.m6;
+                                    else if (b.Tag.ToString() == "7")
+                                        b.BackgroundImage = Properties.Resources.m7;
+                                    else if (b.Tag.ToString() == "8")
+                                        b.BackgroundImage = Properties.Resources.m8;
+                                }
+                            }
+                        }
+
+                        for (int j = 0; j < clientStreams.Length; j++)
+                        {
+                            Array.Clear(buffer, 0, buffer.Length);
+                            buffer = Encoding.ASCII.GetBytes("S$"+prejeto);
+                            clientStreams[i].Write(buffer, 0, prejeto.Length);
+                        }
+                    }
+                    foreach (Button b in buttons)
+                    {
+                        this.BeginInvoke((Action)(() =>
+                        {
+                            b.Enabled = true;
+                        }));
+                    }
+                    serverTurn = true;
+                }
+            }
+        }
+
+        //*******************CLIENT****************************//
+
+        private void makeGridClient(int width, int height, string[] bombs)
+        {
+            string cor = "";
+            int z = 0;
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    Button newButton = new Button();
+                    newButton.Width = 32;
+                    newButton.Height = 32;
+                    newButton.Top = 32 + (j * 32);
+                    newButton.Left = 180 + (i * 32);
+                    newButton.Name = i + "|" + j;
+
+                    cor = i + "|" + j;
+                    if (cor == bombs[z])
+                    {
+                        newButton.Tag = "B";
+                        z++;
+                    }
+                    else
+                    {
+                        newButton.Tag = "0";
+                    }
+
+                    newButton.MouseDown += new MouseEventHandler(client_minefield_button_click);
+                    newButton.Enabled = false;
+
+                    buttons.Add(newButton);
+
+                    this.BeginInvoke((Action)(() =>
+                    {
+                        this.Controls.Add(newButton);
+                    }));
+
+                }
+            }
+        }
+
+        protected void client_minefield_button_click(object sender, EventArgs e)
+        {
+            MouseEventArgs c = (MouseEventArgs)e;
+            Button polje = sender as Button;
+            bool stevilka = false;
+            string state = "", send="";
+
+            if (polje.BackgroundImage == null)
+            {
+                if (c.Button == MouseButtons.Right)
+                {
+                    if (polje.Tag.ToString() == "B")
+                    {
+                        polje.BackgroundImage = Properties.Resources.flag;
+                        state = "f";
+                    }
+                    else
+                        stevilka = true;
+                }
+                else
+                {
+                    if (polje.Tag.ToString() == "B")
+                    {
+                        polje.BackgroundImage = Properties.Resources.bomb;
+                        state = "b";
+                    }
+                    else
+                        stevilka = true;
+                }
+
+                if (stevilka)
+                {
+                    if (polje.Tag.ToString() == "0")
+                        polje.BackgroundImage = Properties.Resources.m0;
+                    else if (polje.Tag.ToString() == "1")
+                        polje.BackgroundImage = Properties.Resources.m1;
+                    else if (polje.Tag.ToString() == "2")
+                        polje.BackgroundImage = Properties.Resources.m2;
+                    else if (polje.Tag.ToString() == "3")
+                        polje.BackgroundImage = Properties.Resources.m3;
+                    else if (polje.Tag.ToString() == "4")
+                        polje.BackgroundImage = Properties.Resources.m4;
+                    else if (polje.Tag.ToString() == "5")
+                        polje.BackgroundImage = Properties.Resources.m5;
+                    else if (polje.Tag.ToString() == "6")
+                        polje.BackgroundImage = Properties.Resources.m6;
+                    else if (polje.Tag.ToString() == "7")
+                        polje.BackgroundImage = Properties.Resources.m7;
+                    else if (polje.Tag.ToString() == "8")
+                        polje.BackgroundImage = Properties.Resources.m8;
+                    state = "s";
+                }
+
+                byte[] buffer = new byte[512];
+
+                send = polje.Name + "$" + state;
+                buffer = Encoding.ASCII.GetBytes(send);
+                clientStream.Write(buffer, 0, send.Length);
+
+                foreach (Button b in buttons)
+                    b.Enabled = false;
+            }
+        }
+
+
+        private void client_button(object sender, EventArgs e)
+        {
+            if (clientName.Text != "")
+            {
+                client = new TcpClient();
+                try
+                {
+                    client.Connect("127.0.0.1", (int)8888);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Cannot connect to server \n" + ex.Message);
+                    return;
+                }
+                igralec = clientName.Text;
+                clientThread = new Thread(new ThreadStart(ListeningClient));
+                clientThread.Start();
+            }
+            else
+                MessageBox.Show("Vnesite ime");
+        }
+
+        private void ListeningClient()
+        {
+            clientStream = client.GetStream();
+            byte[] buffer = new byte[512];
+            byte[] data = new byte[512];
+            string prejeto = "";
+            int width, height;
+
+            buffer = Encoding.ASCII.GetBytes(clientName.Text);
+            clientStream.Write(buffer, 0, buffer.Length);
+
+            //sirina in višina grida
+            clientStream.Read(data, 0, data.Length);
+            prejeto = Encoding.ASCII.GetString(data);
+            string[] mere = prejeto.Split('|');
+            width = Int32.Parse(mere[0]);
+            height = Int32.Parse(mere[1]);
+            MessageBox.Show(width.ToString() + " " + height.ToString());
+
+            //dobi lokacijo bomb
+            clientStream.Read(data, 0, 512);
+            prejeto = Encoding.ASCII.GetString(data);
+            string[] bombs = prejeto.Split('/');
+
+            //ustvari grid na clientu
+            makeGridClient(width, height, bombs);
+            markGrid(width,height);
+
+            string[] hit;
+            while (clientGame)
+            {
+                Array.Clear(data, 0, data.Length);
+                clientStream.Read(data, 0, 512);
+                prejeto = Encoding.ASCII.GetString(data);
+                hit = prejeto.Split('$');
+
+                if (hit[0] != "S")
+                {
+                    Array.Clear(data, 0, data.Length);
+                    clientStream.Read(data, 0, 512);
+                    prejeto = Encoding.ASCII.GetString(data);
+                }
+
+                if (prejeto.Substring(0, 5) == "Ready")
+                {
+                    foreach (Button b in buttons)
+                    {
+                        this.BeginInvoke((Action)(() =>
+                        {
+                            b.Enabled = true;
+                        }));
+                    }
+                }
+
+                foreach(Button b in buttons)
+                {            
+                    if(b.Name==hit[0])
+                    {
+                        if (hit[1].StartsWith("b"))
+                            b.BackgroundImage = Properties.Resources.bomb;
+                        else if(hit[1].StartsWith("f"))
+                            b.BackgroundImage = Properties.Resources.flag;
+                        else if(hit[1].StartsWith("s"))
+                        {
+                            if (b.Tag.ToString() == "0")
+                                b.BackgroundImage = Properties.Resources.m0;
+                            else if (b.Tag.ToString() == "1")
+                                b.BackgroundImage = Properties.Resources.m1;
+                            else if (b.Tag.ToString() == "2")
+                                b.BackgroundImage = Properties.Resources.m2;
+                            else if (b.Tag.ToString() == "3")
+                                b.BackgroundImage = Properties.Resources.m3;
+                            else if (b.Tag.ToString() == "4")
+                                b.BackgroundImage = Properties.Resources.m4;
+                            else if (b.Tag.ToString() == "5")
+                                b.BackgroundImage = Properties.Resources.m5;
+                            else if (b.Tag.ToString() == "6")
+                                b.BackgroundImage = Properties.Resources.m6;
+                            else if (b.Tag.ToString() == "7")
+                                b.BackgroundImage = Properties.Resources.m7;
+                            else if (b.Tag.ToString() == "8")
+                                b.BackgroundImage = Properties.Resources.m8;
+                        }
+
+                        this.BeginInvoke((Action)(() =>
+                        {
+                            b.Enabled = false;
+                        }));
+                    }
+                }
+            }
+        }
+
+        
+    }
+}
